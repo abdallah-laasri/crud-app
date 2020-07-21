@@ -1,0 +1,90 @@
+<html>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #b5b0b066;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 100px auto;
+      box-shadow: 0 0 10px #c5bfbf;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+      background-color: #f7f7f7;
+      border: 1px solid #fff;
+      text-align: center;
+    }
+    th {
+      background-color: dodgerblue;
+      color: white;
+    }
+    a {
+      background-color: dodgerblue;
+      box-shadow: 2px 2px 2px #9a9a9a;
+      border-radius: 5px;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 21px;
+    }
+    .edit {
+      background-color: #06c063c7;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .delete {
+      background-color: #f52832b5;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <a href="/add">Add user +</a>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+      <% if (users.length > 0) { users.forEach(user=>{ %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+        <td>
+          <a href="/edit/<%= user.id %>" class="edit">Edit</a>
+          <a href="/delete/<%= user.id %>" class="delete">Delete</a>
+        </td>
+      </tr>
+      <%})} %>
+    </table>
+  </body>
+</html>
