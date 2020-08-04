@@ -4,9 +4,10 @@ const User = require("../models/user.model");
 
 exports.getAll = (req, res) => {
   User.getAll((result) => {
-    res.render("user-index", {
-      users: result,
-    });
+    // res.render("user-index", {
+    //   users: result,
+    // });
+    res.send(result);
   });
 };
 
@@ -23,19 +24,21 @@ exports.insert = (req, res) => {
       .send({ error: true, message: "Please provide all required field" });
   } else {
     User.insert(new_user, () => {
-      res.redirect("/");
+      // res.redirect("/");
     });
   }
 };
 
-exports.edit = (req, res) => {
+exports.findById = (req, res) => {
   var id = req.params.id;
   User.findById(id, (result) => {
-    res.render("edit", {
-      user: result[0],
-    });
+    // res.render("edit", {
+    //   user: result[0],
+    // });
+    res.json(result);
   });
 };
+
 exports.update = (req, res) => {
   var id = req.params.id;
   let data = {
@@ -49,7 +52,7 @@ exports.update = (req, res) => {
       .send({ error: true, message: "Please provide all required field" });
   } else {
     User.update(id, data, () => {
-      res.redirect("/");
+      // res.redirect("/");
     });
   }
 };
@@ -57,6 +60,6 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   let id = req.params.id;
   User.delete(id, () => {
-    res.redirect("/");
+    // res.redirect("/");
   });
 };

@@ -15,6 +15,7 @@ User.getAll = function (handler) {
     handler(result);
   });
 };
+
 User.insert = function (obj, handler) {
   connection.query("insert into users set ?", obj, (err, result) => {
     if (err) throw err;
@@ -22,6 +23,7 @@ User.insert = function (obj, handler) {
     handler();
   });
 };
+
 User.findById = (id, handler) => {
   connection.query("select * from users where id = ?", id, (err, result) => {
     if (err) throw err;
@@ -29,6 +31,7 @@ User.findById = (id, handler) => {
     handler(result);
   });
 };
+
 User.update = function (id, obj, handler) {
   connection.query(
     "update users set name ='" +
@@ -47,6 +50,7 @@ User.update = function (id, obj, handler) {
     }
   );
 };
+
 User.delete = function (id, handler) {
   connection.query("delete from users where id = ?", id, (err, result) => {
     if (err) throw err;
